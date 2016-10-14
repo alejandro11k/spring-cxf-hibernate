@@ -1,15 +1,15 @@
 package service;
 
-import java.io.Serializable;
+//import java.io.Serializable;
 import java.util.List;
 
 import org.springframework.transaction.annotation.Transactional;
 
 import repository.GenericRepository;
 
-public class GenericService<T> implements Serializable {
-
-    private static final long serialVersionUID = -6540963495078524186L;
+public class GenericService<T> //implements Serializable {
+{
+    //private static final long serialVersionUID = -6540963495078524186L;
 
     private GenericRepository<T> repository;
 

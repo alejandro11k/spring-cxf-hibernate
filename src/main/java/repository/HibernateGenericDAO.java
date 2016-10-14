@@ -10,9 +10,10 @@ import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
  *
  * @param <T>
  */
+@SuppressWarnings("serial")
 public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport implements GenericRepository<T>, Serializable {
 
-    private static final long serialVersionUID = 5058950102420892922L;
+ //   private static final long serialVersionUID = 5058950102420892922L;
 
     protected Class<T> persistentClass = this.getDomainClass();
 
@@ -44,7 +45,8 @@ public abstract class HibernateGenericDAO<T> extends HibernateDaoSupport impleme
     }
 
     public List<T> findAll() {
-        List<T> find = (List<T>) this.getHibernateTemplate().find("from " + this.persistentClass.getName() + " o");
+        @SuppressWarnings("unchecked")
+		List<T> find = (List<T>) this.getHibernateTemplate().find("from " + this.persistentClass.getName() + " o");
         return find;
 
     }

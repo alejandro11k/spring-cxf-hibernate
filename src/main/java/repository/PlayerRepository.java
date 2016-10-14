@@ -10,9 +10,10 @@ import org.springframework.orm.hibernate4.HibernateCallback;
 
 import model.Player;
 
+@SuppressWarnings("serial")
 public class PlayerRepository extends HibernateGenericDAO<Player> implements GenericRepository<Player> {
 
-    private static final long serialVersionUID = -4036535812105672110L;
+    //private static final long serialVersionUID = -4036535812105672110L;
 
     @SuppressWarnings({ "unchecked", "rawtypes" })
     public List<Player> filterPeople(final String pattern) {

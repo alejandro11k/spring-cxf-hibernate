@@ -2,7 +2,7 @@ package model;
 
 public class Player extends Entity{
 	
-    private static final long serialVersionUID = 6716714837006810519L;
+    //private static final long serialVersionUID = 6716714837006810519L;
 	
 	private String name;
 	private int score;
