@@ -3,8 +3,11 @@ package webService;
 import java.util.List;
 import java.util.Set;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -39,6 +42,25 @@ public class PlayerRest {
         List<Player> posts = playerService.retriveAll();
         return posts;
     }
+    
+    @GET
+    @Path("/addPlayerDummy")
+    public void addPlayer(){
+    	Player newPlayer = new Player("looser");
+    	newPlayer.setScore(9);
+    	playerService.save(newPlayer);
+    }
+    
+    @GET
+    @Produces("application/json")
+    @Path("/addPlayer/{name}")
+    public String addPlayer(@PathParam("name") String name){
+    	Player newPlayer = new Player(name);
+    	newPlayer.setScore(0);
+    	playerService.save(newPlayer);
+    	return "OK";
+    }
+    
     
     /*
 
