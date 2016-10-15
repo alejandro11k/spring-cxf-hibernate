@@ -12,9 +12,12 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
 
 import org.apache.commons.lang.StringUtils;
+
 import model.Player;
+import model.PlayerJson;
 import repository.PlayerRepository;
 import service.PlayerService;
 
@@ -39,24 +42,28 @@ public class PlayerRest {
     @Path("/players")
     @Produces("application/json")
     public List<Player> getAllPlayers() {
-        List<Player> posts = playerService.retriveAll();
-        return posts;
+        List<Player> players = playerService.retriveAll();
+        return players;
     }
     
     @GET
     @Path("/addPlayerDummy")
-    public void addPlayer(){
+    @Produces("application/json")
+    public String addPlayer(){
     	Player newPlayer = new Player("looser");
     	newPlayer.setScore(9);
     	playerService.save(newPlayer);
+    	return "OK";
     }
     
-    @GET
+    @POST
     @Produces("application/json")
-    @Path("/addPlayer/{name}")
-    public String addPlayer(@PathParam("name") String name){
-    	Player newPlayer = new Player(name);
-    	newPlayer.setScore(0);
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/addPlayer/")
+    public String addPlayer(PlayerJson newPlayerJson){
+    	Player newPlayer = new Player();
+    	newPlayer.setName(newPlayerJson.getName());
+    	newPlayer.setScore(newPlayerJson.getScore());
     	playerService.save(newPlayer);
     	return "OK";
     }
