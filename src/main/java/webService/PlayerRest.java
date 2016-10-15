@@ -17,7 +17,6 @@ import javax.ws.rs.core.MediaType;
 import org.apache.commons.lang.StringUtils;
 
 import model.Player;
-import model.PlayerJson;
 import repository.PlayerRepository;
 import service.PlayerService;
 
@@ -60,10 +59,7 @@ public class PlayerRest {
     @Produces("application/json")
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/addPlayer/")
-    public String addPlayer(PlayerJson newPlayerJson){
-    	Player newPlayer = new Player();
-    	newPlayer.setName(newPlayerJson.getName());
-    	newPlayer.setScore(newPlayerJson.getScore());
+    public String addPlayer(Player newPlayer){
     	playerService.save(newPlayer);
     	return "OK";
     }
