@@ -77,10 +77,12 @@
 		</property>
 		<property name="mappingLocations">
 			<list>
+				<!-- 
 				<value>classpath*:mappings/*.hbm.xml</value>
+				 -->
 			</list>
 		</property>
-
+		<property name="packagesToScan" value="model"/>
 	</bean>
 
 

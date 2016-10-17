@@ -24,12 +24,12 @@ public class TestHibernate {
 
     @After
     public void eraseData() {
-    	playerService.retriveAll().forEach(each -> playerService.delete(each));
+    	//playerService.retriveAll().forEach(each -> playerService.delete(each));
     }
     
     @Test
     public void testDelete() {
-        playerService.save(new Player("player2"));
+        //playerService.save(new Player("player2"));
         playerService.delete(playerService.retriveAll().get(0));
         Assert.assertEquals(0, playerService.retriveAll().size());
     }

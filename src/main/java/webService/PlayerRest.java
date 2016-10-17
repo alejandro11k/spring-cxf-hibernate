@@ -52,6 +52,10 @@ public class PlayerRest {
     	Player newPlayer = new Player("looser");
     	newPlayer.setScore(9);
     	playerService.save(newPlayer);
+    	Player newPlayer2 = new Player("looser2");
+    	newPlayer2.setScore(9);
+    	newPlayer2.friends.add(playerService.retriveAll().get(0));
+    	playerService.save(newPlayer2);
     	return "OK";
     }
     
